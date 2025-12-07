@@ -1,0 +1,10 @@
+Django
+djangorestframework
+psycopg2-binary
+dj-database-url
+python-dotenv
+reportlab
+django-cors-headers
+argon2-cffi
+gunicorn
+pytz
