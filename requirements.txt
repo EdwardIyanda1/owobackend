@@ -11,3 +11,4 @@ pytz
 whitenoise
 Pillow
 djangorestframework-simplejwt
+django-extensions
