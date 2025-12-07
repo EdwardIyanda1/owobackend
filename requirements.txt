@@ -10,3 +10,4 @@ gunicorn
 pytz
 whitenoise
 Pillow
+djangorestframework-simplejwt
