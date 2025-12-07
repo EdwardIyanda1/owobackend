@@ -13,6 +13,8 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 from pathlib import Path
 import os
 from datetime import timedelta
+from dotenv import load_dotenv
+load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -27,9 +29,12 @@ SECRET_KEY = 'django-insecure-8if5#j2a+8b^2e5pq!3t$ui7z*h##_)oh#%_qe)%##&6xhe$u2
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['172.13.2.116', 'localhost', '127.0.0.1', '10.101.78.141', '10.234.156.141',]
+ALLOWED_HOSTS = ['*']
 
 AUTH_USER_MODEL = 'accounts.User'
+
+STATIC_ROOT = BASE_DIR / 'staticfiles'
+
 
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',  # ADD THIS - MUST BE FIRST or near top
@@ -80,13 +85,15 @@ WSGI_APPLICATION = 'config.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
+import dj_database_url
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
+    'default': dj_database_url.parse(
+        os.environ.get("DATABASE_URL"),
+        conn_max_age=600, ssl_require=True
+    )
 }
+
 
 
 # Password validation
