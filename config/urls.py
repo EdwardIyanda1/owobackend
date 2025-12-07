@@ -9,5 +9,10 @@ def health_check(request):
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/auth/', include('accounts.urls')),
-    path('healthz/', health_check),  # <--- Add this line for Render
+    
+    # 1. Handle with trailing slash (already done)
+    path('healthz/', health_check), 
+    
+    # 2. Add the path without a trailing slash to be safe
+    path('healthz', health_check),
 ]
