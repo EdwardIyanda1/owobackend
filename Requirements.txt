@@ -8,3 +8,5 @@ django-cors-headers
 argon2-cffi
 gunicorn
 pytz
+whitenoise
+Pillow
