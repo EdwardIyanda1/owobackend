@@ -44,7 +44,7 @@ class WalletAdmin(admin.ModelAdmin):
     
     def balance_display(self, obj):
         # FIXED: Use str.format() instead of f-string in format_html
-        return format_html('<strong>₦{:.2f}</strong>'.format(float(obj.balance)))
+        return format_html("<strong>₦{:.2f}</strong>", float(obj.balance))
     balance_display.short_description = 'Balance'
     
     def created_at(self, obj):
