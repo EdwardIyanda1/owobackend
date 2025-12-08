@@ -36,23 +36,18 @@ class WalletAdmin(admin.ModelAdmin):
     
     def user_email(self, obj):
         return obj.user.email
-    user_email.short_description = 'User Email'
-    
+
     def user_phone(self, obj):
         return obj.user.phone_number
-    user_phone.short_description = 'Phone Number'
-    
+
     def balance_display(self, obj):
-        # FIXED: Use str.format() instead of f-string in format_html
-        return format_html("<strong>₦{:.2f}</strong>", float(obj.balance))
-    balance_display.short_description = 'Balance'
-    
+        amount = float(obj.balance)
+        return format_html("<strong>₦{}</strong>", f"{amount:,.2f}")
+
     def created_at(self, obj):
         return obj.user.date_joined.strftime('%Y-%m-%d %H:%M:%S')
-    created_at.short_description = 'Created At'
-    
+
     def updated_at(self, obj):
-        # Return empty string since we don't have this field
         return ""
 
 # Custom Transaction Admin
